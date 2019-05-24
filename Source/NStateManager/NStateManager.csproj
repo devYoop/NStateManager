@@ -13,8 +13,8 @@
     <PackageProjectUrl>https://github.com/scottctr/NStateManager</PackageProjectUrl>
     <RepositoryUrl>https://github.com/scottctr/NStateManager</RepositoryUrl>
     <PackageId>NStateManager</PackageId>
-    <AssemblyVersion>1.2.2</AssemblyVersion>
-    <FileVersion>1.2.2</FileVersion>
+    <AssemblyVersion>1.2.3</AssemblyVersion>
+    <FileVersion>1.2.3</FileVersion>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Description>Easy to use and very flexible state manager for .Net.</Description>
   </PropertyGroup>
