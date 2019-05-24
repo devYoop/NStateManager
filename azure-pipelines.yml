@@ -37,7 +37,7 @@ steps:
   inputs:
     command: 'pack'
     feedsToUse: 'select'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/NStateManager.csproj'
     nobuild: true
     versioningScheme: 'off'
 
