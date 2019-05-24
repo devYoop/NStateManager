@@ -56,7 +56,8 @@ namespace NStateManager.Example.Sale.Console
                     Output.WriteLine($"Returning change of {payment.Amount:C}. {getSaleStatus(sale)}");
                 })
                 //Transition to the Complete state on ChangeGiven -- no conditions
-                .AddTransition(SaleEvent.ChangeGiven, SaleState.Complete);
+                .AddTransition(SaleEvent.ChangeGiven, SaleState.Complete)
+                .AddTransition(SaleEvent.Error, SaleState.Error);
 
             //No configuration required for Complete state since it's a final state and
             //transitions or actions are taken at this point
@@ -65,6 +66,10 @@ namespace NStateManager.Example.Sale.Console
         private static string getSaleStatus(Sale sale)
         {
             return $"\r\n--> SaleState: {sale.State}     \tBalance: {sale.Balance:$#,##0.00}.";
+        }
+        public static void AddError(Sale sale, SaleItem saleItem)
+        {
+            var t = _stateMachine.FireTrigger(sale, SaleEvent.Error);
         }
 
         public static void AddItem(Sale sale, SaleItem saleItem)
@@ -80,6 +85,11 @@ namespace NStateManager.Example.Sale.Console
         public static void ReturnChange(Sale sale, Payment payment)
         {
             _stateMachine.FireTrigger(sale, SaleEvent.ChangeGiven, payment);
+        }
+
+        public static String GetStates(Sale sale)
+        {
+            return sale.State + ":" + String.Join(",", _stateMachine.AvailablesTrigger(sale).ToArray());
         }
     }
 }

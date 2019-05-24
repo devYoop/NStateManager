@@ -10,6 +10,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NStateManager
 {
@@ -154,6 +155,23 @@ namespace NStateManager
                 : stateConfiguration.FireTrigger(executionParameters);
 
             return executeExitAndEntryActions(executionParameters, result);
+        }
+
+        public List<TTrigger> AvailablesTrigger(T context)
+        {
+            var startState = StateAccessor(context);
+
+            _stateConfigurations.TryGetValue(startState, out var stateConfiguration);
+
+            List<TTrigger> triggers = new List<TTrigger>();
+
+            List<TTrigger> availableTriggers = stateConfiguration?.InternalTransitions()?.Keys.ToList();
+            if (availableTriggers != null)
+            {
+                triggers.AddRange(availableTriggers);
+            }
+
+            return triggers;
         }
 
         public bool IsInState(T context, TState state)

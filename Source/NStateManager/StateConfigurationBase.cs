@@ -26,6 +26,7 @@ namespace NStateManager
 
         public Func<T, TState> StateAccessor { get; }
         public Action<T, TState> StateMutator { get; }
+        public Dictionary<TTrigger, List<StateTransitionBase<T, TState, TTrigger>>> InternalTransitions { get { return Transitions; } }
 
         /// <summary>
         /// Constructor.

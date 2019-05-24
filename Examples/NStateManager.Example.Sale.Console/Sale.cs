@@ -17,7 +17,8 @@ namespace NStateManager.Example.Sale.Console
     {
         Open,
         ChangeDue,
-        Complete
+        Complete,
+        Error
     }
 
     public enum SaleEvent
@@ -25,7 +26,8 @@ namespace NStateManager.Example.Sale.Console
         AddItem,
         Pay,
         ChangeGiven,
-        SaleCancelled
+        SaleCancelled,
+        Error
     }
 
     public class Sale

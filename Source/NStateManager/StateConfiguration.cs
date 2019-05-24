@@ -614,5 +614,10 @@ namespace NStateManager
 
             return this;
         }
+
+        Dictionary<TTrigger, List<StateTransitionBase<T, TState, TTrigger>>> IStateConfigurationInternal<T, TState, TTrigger>.InternalTransitions()
+        {
+            return base.InternalTransitions;
+        }
     }
 }

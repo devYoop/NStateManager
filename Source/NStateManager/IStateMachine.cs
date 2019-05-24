@@ -9,6 +9,7 @@
 //See the License for the specific language governing permissions and limitations under the License.
 #endregion
 using System;
+using System.Collections.Generic;
 
 namespace NStateManager
 {
@@ -23,5 +24,6 @@ namespace NStateManager
         IStateMachine<T, TState, TTrigger> RegisterOnTransitionedAction(Action<T, StateTransitionResult<TState, TTrigger>> action);
         Func<T, TState> StateAccessor { get; }
         Action<T, TState> StateMutator { get; }
+        List<TTrigger> AvailablesTrigger(T context);
     }
 }
