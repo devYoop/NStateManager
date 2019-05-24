@@ -15,20 +15,20 @@ namespace NStateManager.Example.Sale.Console
         static void Main(string[] args)
         {
             var sale = new Sale(saleID: 1);
-            System.Console.WriteLine("==> " + SaleStateMachine.GetStates(sale));
+            System.Console.WriteLine("==> " + SaleStateMachine.PrintAvailableStates(sale));
             SaleStateMachine.AddItem(sale, new SaleItem("Magazine", price: 3.00));
             SaleStateMachine.AddItem(sale, new SaleItem("Fuel", price: 10.00));
-            System.Console.WriteLine("==> " + SaleStateMachine.GetStates(sale));
+            System.Console.WriteLine("==> " + SaleStateMachine.PrintAvailableStates(sale));
             SaleStateMachine.AddPayment(sale, new Payment(amount: 10.00));
             SaleStateMachine.AddPayment(sale, new Payment(amount: 10.00));
-            System.Console.WriteLine("==> " + SaleStateMachine.GetStates(sale));
+            System.Console.WriteLine("==> " + SaleStateMachine.PrintAvailableStates(sale));
 
             SaleStateMachine.ReturnChange(sale, new Payment(amount: -7.00));
-            System.Console.WriteLine(SaleStateMachine.GetStates(sale));
+            System.Console.WriteLine(SaleStateMachine.PrintAvailableStates(sale));
             //We should be in Complete state here, so the following actions should be ignored
             SaleStateMachine.AddItem(sale, new SaleItem("Magazine", 3.00));
             SaleStateMachine.AddItem(sale, new SaleItem("Fuel", 10.00));
-            System.Console.WriteLine("==> " + SaleStateMachine.GetStates(sale));
+            System.Console.WriteLine("==> " + SaleStateMachine.PrintAvailableStates(sale));
 
             System.Console.Read();
         }

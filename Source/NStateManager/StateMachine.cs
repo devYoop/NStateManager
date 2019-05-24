@@ -163,15 +163,7 @@ namespace NStateManager
 
             _stateConfigurations.TryGetValue(startState, out var stateConfiguration);
 
-            List<TTrigger> triggers = new List<TTrigger>();
-
-            List<TTrigger> availableTriggers = stateConfiguration?.InternalTransitions()?.Keys.ToList();
-            if (availableTriggers != null)
-            {
-                triggers.AddRange(availableTriggers);
-            }
-
-            return triggers;
+            return stateConfiguration?.InternalTransitions()?.Keys.ToList() ?? new List<TTrigger>();
         }
 
         public bool IsInState(T context, TState state)

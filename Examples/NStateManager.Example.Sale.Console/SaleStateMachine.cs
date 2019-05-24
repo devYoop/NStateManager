@@ -87,9 +87,9 @@ namespace NStateManager.Example.Sale.Console
             _stateMachine.FireTrigger(sale, SaleEvent.ChangeGiven, payment);
         }
 
-        public static String GetStates(Sale sale)
+        public static String PrintAvailableStates(Sale sale)
         {
-            return sale.State + ":" + String.Join(",", _stateMachine.AvailablesTrigger(sale).ToArray());
+            return sale.State + ":" + String.Join(",", _stateMachine.AvailablesTrigger(sale));
         }
     }
 }
