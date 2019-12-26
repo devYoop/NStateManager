@@ -160,9 +160,7 @@ namespace NStateManager
         public List<TTrigger> AvailablesTrigger(T context)
         {
             var startState = StateAccessor(context);
-
             _stateConfigurations.TryGetValue(startState, out var stateConfiguration);
-
             return stateConfiguration?.InternalTransitions()?.Keys.ToList() ?? new List<TTrigger>();
         }
 
